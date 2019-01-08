@@ -41,3 +41,25 @@ After, you must stop services Apache and PostgreSQL in main machine (example wit
 Run for second time ```docker-compose up```
 
 ```docker-compose up -d postgres pgadmin redis apache2 php-worker selenium jenkins laravel-echo-server elasticsearch workspace```
+
+### 5 .- Enter to bash of Workspace
+
+```docker-compose exec workspace bash```
+
+### 6 .- Create a Laravel Project in ```/var/www``` (example with clone laravel project)  
+
+```git clone https://gitlab.com/agroplastic/backend_agroplastic.git```
+
+### 6 .- Config laravel project
+
+- ```cd my_project/```
+- ```composer install```
+- ```cp .env_example .env```
+- ```php artisan key:generate``` 
+- Add this line to ```.env``` file: ```APP_CODE_PATH_HOST=../my_project```
+
+Run other time ```docker-compose up``` (becouse edited ```.env```)
+
+```docker-compose up -d postgres pgadmin redis apache2 php-worker selenium jenkins laravel-echo-server elasticsearch workspace```
+
+Now all is resolved.
