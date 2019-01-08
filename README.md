@@ -27,16 +27,17 @@ In this case, we will install the next tools of Laradock:
 
 ```docker-compose up -d postgres pgadmin redis apache2 php-worker selenium jenkins laravel-echo-server elasticsearch workspace```
 
-### 4 .- If you have errors with installations for Port errors of tools containers, you need edit ```docker-compose.yml``` file. For example, if you hace problems with PostgresQL and Apache2
+### 4 .- Port errors
 
-Postgres:
+Close containers
 
-- Change ```"${POSTGRES_PORT}:5432"``` to ```"${POSTGRES_PORT}:5433"```
+```docker-compose down```
 
-Apache2:
+After, you must stop services Apache and PostgreSQL in main machine (example with fedora S.O.)
 
-- Change ```"${APACHE_HOST_HTTP_PORT}:80"``` to ```"${POSTGRES_PORT}:5433"```
-- Change ```"${APACHE_HOST_HTTPS_PORT}:443"``` to ```"${APACHE_HOST_HTTPS_PORT}:444"```
+- service httpd stop (*service restarted with: ```$ service httpd start```*)
+- service postgresql-11 stop (*service restarted with: ```$ service postgresql-11 start```*)
 
+Run for second time ```docker-compose up```
 
-
+```docker-compose up -d postgres pgadmin redis apache2 php-worker selenium jenkins laravel-echo-server elasticsearch workspace```
