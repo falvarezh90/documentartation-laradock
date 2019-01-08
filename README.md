@@ -83,7 +83,7 @@ Run this command in your machine CLI
 
 And search docker network
 
-![docker network](laradock-documentation/blob/master/README.md "Docker IP Network")
+![docker network](https://github.com/falvarezh90/laradock-documentation/blob/master/src/IP-docker.png "Docker IP Network")
 
 In this case, the IP of docker is ```172.17.0.1```
 
