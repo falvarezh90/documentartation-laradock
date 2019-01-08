@@ -62,4 +62,30 @@ Run other time ```docker-compose up``` (becouse edited ```.env```)
 
 ```docker-compose up -d postgres pgadmin redis apache2 php-worker selenium jenkins laravel-echo-server elasticsearch workspace```
 
-Now all is resolved.
+### 7.- Enter to PGAdmin (Web Client)
+
+- Enter in browser to ```http://localhost:5050```
+- Login Credentials 
+    - ```Username:  pgadmin4@pgadmin.org```
+    - ```Password:  admin```
+- In PGAdmin
+    - Create server
+        - ```name: postgres_docker```
+        - ```host name/address: 172.17.0.1``` (you IP fro docker container)
+        - ```user: default```
+        - ```password: secret```
+
+#### 7.1 Get IP for docker
+
+Run this command in your machine CLI
+
+```ipconfig```
+
+And search docker network
+
+![docker network](laradock-documentation/blob/master/README.md "Docker IP Network")
+
+In this case, the IP of docker is ```172.17.0.1```
+
+
+[Laradock Documentation](https://laradock.io/)
