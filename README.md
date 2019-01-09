@@ -35,8 +35,8 @@ Close containers
 
 After, you must stop services Apache and PostgreSQL in main machine (example with fedora S.O.)
 
-- service httpd stop (*service restarted with: ```$ service httpd start```*)
-- service postgresql-11 stop (*service restarted with: ```$ service postgresql-11 start```*)
+- ```service httpd stop``` (*service restarted with: ```$ service httpd start```*)
+- ```service postgresql-11 stop``` (*service restarted with: ```$ service postgresql-11 start```*)
 
 Run for second time ```docker-compose up```
 
@@ -50,7 +50,7 @@ Run for second time ```docker-compose up```
 
 ```git clone https://gitlab.com/agroplastic/backend_agroplastic.git```
 
-### 6 .- Config laravel project
+### 7 .- Config laravel project
 
 - ```cd my_project/```
 - ```composer install```
@@ -58,11 +58,11 @@ Run for second time ```docker-compose up```
 - ```php artisan key:generate``` 
 - Add this line to ```.env``` file: ```APP_CODE_PATH_HOST=../my_project```
 
-Run other time ```docker-compose up``` (becouse edited ```.env```)
+Run other time ```docker-compose up``` (because edited ```.env```)
 
 ```docker-compose up -d postgres pgadmin redis apache2 php-worker selenium jenkins laravel-echo-server elasticsearch workspace```
 
-### 7.- Enter to PGAdmin (Web Client)
+### 8.- Enter to PGAdmin (Web Client)
 
 - Enter in browser to ```http://localhost:5050```
 - Login Credentials 
@@ -71,13 +71,14 @@ Run other time ```docker-compose up``` (becouse edited ```.env```)
 - In PGAdmin
     - Create server
         - ```name: postgres_docker```
-        - ```host name/address: 172.17.0.1``` (you IP fro docker container)
+        - ```host name/address: 172.17.0.1``` (your IP for docker container)
         - ```user: default```
         - ```password: secret```
+    - Create DB (in ```postgres_socker``` server)
 
-#### 7.1 Get IP for docker
+#### 8.1 Get IP for docker
 
-Run this command in your machine CLI
+Run this command in your machine Shell
 
 ```ipconfig```
 
@@ -87,5 +88,20 @@ And search docker network
 
 In this case, the IP of docker is ```172.17.0.1```
 
+### 9.- Config Postgres Connection in your```.env``` file of your laravel project 
+
+```
+DB_CONNECTION=pgsql
+DB_HOST=172.17.0.1
+DB_PORT=5432
+DB_DATABASE=example
+DB_USERNAME=default
+DB_PASSWORD=secret
+```
+
+### 10.- Re-run ```Apache``` and ```Workspace``` containers
+
 
 [Laradock Documentation](https://laradock.io/)
+
+```docker-compose up -d postgres pgadmin redis apache2 php-worker selenium jenkins laravel-echo-server elasticsearch workspace```
