@@ -88,6 +88,13 @@ And search docker network
 
 In this case, the IP of docker is ```172.17.0.1```
 
+#### 8.2 Config Postgres Binary Path in PGAdmin (optional)
+
+- Enter to ```File > Preferences > Path > Binary paths```
+- Added path ```/usr/local/bin/``` in PostgresSQL Binary Path
+
+Now is ready for use Backup of DB 
+
 ### 9.- Config Postgres Connection in your```.env``` file of your laravel project 
 
 ```
